@@ -33,37 +33,40 @@ if (isset($email)) {
             $sql = "INSERT INTO `users`(`name`, `email`, `password`, `contact_no`, `gender`, `profile_picture`, `date`) VALUES ('$name', '$email', '$password', '$contact_no', '$gender', '$profile_Pic_Name', '$Date')";
             
             $inserteduser = mysqli_query($conn, $sql);
-            
-            
-            
-            
-            if ($inserteduser) {
+       
+            if ($inserteduser) 
+            {
                 
-                file_put_contents('profilepictures/' . $profile_Pic_Name, $realProfilePic);
-                
-                
+                file_put_contents('profilepictures/' . $profile_Pic_Name, $realProfilePic);                        
                 $myObj->status = "updated";
                 $myJSON        = json_encode($myObj);
-                echo $myJSON;
-                
-            } else {
+                echo $myJSON;             
+            } 
+            else 
+            {
                 $myObj->status = "not updated";
                 $myJSON        = json_encode($myObj);
                 echo $myJSON;
             }
-        } else {
+        } 
+        else 
+        {
             $myObj->status = "exist";
             $myJSON        = json_encode($myObj);
             echo $myJSON;
         }
         
-    } else {
+    } 
+    else 
+    {
         $myObj->status = "not updated";
         $myJSON        = json_encode($myObj);
         echo $myJSON;
     }
     
-} else {
+} 
+else 
+{
     $myObj->status = "not updated";
     $myJSON        = json_encode($myObj);
     echo $myJSON;
